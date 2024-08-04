@@ -6,7 +6,10 @@
 
   <div class="col">
 
-  <shared-search-box (onValue)="searchBycapital($event)" placeholder="Buscar por capital">
+  <shared-search-box
+  (onDebounce)="searchBycapital($event)"
+  [initialValue]="initialValue"
+  placeholder="Buscar por capital">
   </shared-search-box>
 
   </div>
@@ -19,12 +22,9 @@
 
     <hr>
 
+    <shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
     <countries-table [countries]="countries"></countries-table>
-    <!-- <ul>
-      <li *ngFor="let country of countries">
-        {{ country.capital }}  - {{ country.population}}
-      </li>
-    </ul> -->
+
 
   </div>
 
